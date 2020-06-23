@@ -1,0 +1,71 @@
+﻿@model TicketManagementSystem.ViewModels.LoginRequest
+@{
+    ViewBag.Title = "Login";
+
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    ViewBag.LayoutClass = "login-page";
+
+}
+
+<div class="hold-transition login-page">
+
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="../../index2.html">Support Ticket</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <form action="@Url.Action("Login", "Account")" method="post">
+                    @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Enter your email address" })
+
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Enter your password", type = "password" })
+
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            @*<div class="icheck-primary">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">
+                        Remember Me
+                    </label>
+                </div>*@
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+
+                <p class="mb-1">
+                    <a href="@Url.Action("ForgotPassword", "Account")">I forgot my password</a>
+                </p>
+                <p class="mb-0">
+                    <a href="@Url.Action("Register", "Account")" class="text-center">Register a new membership</a>
+                </p>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,97 @@
+﻿
+@model TicketManagementSystem.ViewModels.RegisterRequest
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+  
+}
+
+    <div class="class=hold-transition register-page">
+        <div class="register-box">
+            <div class="register-logo">
+                <a href="#/">Support Ticket</a>
+            </div>
+
+            <div class="card">
+                <div class="card-body register-card-body">
+                    <p class="login-box-msg">Register a new membership</p>
+
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                    {@Html.AntiForgeryToken()
+                    @Html.ValidationMessageFor(x => x.FirstName, null, new { @class = "text-danger" })
+
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(x => x.FirstName, new { PlaceHolder = "First Name", @class = "form-control",})
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(x => x.LastName, null, new { @class = "text-danger" })
+
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(x => x.LastName, new { PlaceHolder = "Last Name", @class = "form-control"})
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    @Html.ValidationMessageFor(x => x.Email, null, new { @class = "text-danger" })
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(x => x.Email, new { PlaceHolder = "Email", @class = "form-control" })
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(x => x.Password, new { PlaceHolder = "Password", @class = "form-control", type = "password"})
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    @Html.ValidationMessageFor(x => x.ConfirmPassword, null, new { @class = "text-danger" })
+                    <div class="input-group mb-3">
+                        @Html.TextBoxFor(x => x.ConfirmPassword, new { PlaceHolder = "Confirm Password", @class = "form-control", type = "password" })
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+              
+
+                    <div class="row">
+                        <div class="col-8">
+
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+
+                }
+                    <a href="@Url.Action("Login", "Account")" class="text-center">I already have a membership</a>
+                </div>
+
+                <!-- /.form-box -->
+
+            </div><!-- /.card -->
+        </div>
+
+
